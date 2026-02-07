@@ -102,8 +102,8 @@ body {
     height: 100%;
     object-fit: contain;
     mix-blend-mode: lighten;
-    /* Optimized for blending bright logo on dark bg */
-    opacity: 0.9;
+    opacity: 0.95;
+    /* Increased for better visibility */
 
     /* Edge fading: creates a soft transition around the image edges */
     -webkit-mask-image: radial-gradient(circle, black 40%, transparent 95%);
@@ -116,21 +116,21 @@ body {
 
     0%,
     100% {
-        opacity: 0.9;
+        opacity: 0.95;
         transform: scale(1);
     }
 
     50% {
-        opacity: 0.75;
-        transform: scale(0.98);
+        opacity: 0.8;
+        transform: scale(0.99);
     }
 
     51% {
-        opacity: 0.95;
+        opacity: 0.98;
     }
 
     53% {
-        opacity: 0.8;
+        opacity: 0.85;
     }
 }
 
