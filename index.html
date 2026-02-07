@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BANCHER | Premium Interactive Hub</title>
+    <title>BANCHER | Digital Hub</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,102 +17,91 @@
 </head>
 
 <body>
-    <!-- Full-screen Dynamic Canvas -->
     <canvas id="canvas-bg"></canvas>
     <div class="scanlines"></div>
 
     <div class="main-container">
-        <!-- Header Section -->
+        <!-- Header -->
         <header class="header">
             <div class="logo-wrapper">
-                <img src="assets/logo.png" alt="Логотип Bancher" class="logo" data-tilt>
+                <img src="assets/logo.png" alt="Bancher" class="logo" data-tilt>
             </div>
             <h1 class="brand-title" data-tilt>BANCHER</h1>
-            <div class="subtitle">ЗАШИФРОВАННЫЙ КАНАЛ</div>
+            <div class="subtitle">БЫСТРО - КАЧЕСТВЕЕННО - НАДЕЖНО</div>
+
+            <!-- Information: Locations -->
+            <div class="hero-info">
+                <div class="status-tag"><i class="fa-solid fa-location-dot"></i> КИЕВ</div>
+                <div class="status-tag"><i class="fa-solid fa-location-dot"></i> ЛЬВОВ</div>
+                <div class="status-tag"><i class="fa-solid fa-location-dot"></i> ОДЕССА</div>
+            </div>
         </header>
 
-        <!-- Connectivity -->
+        <!-- Connectivity: Rebranded to Contacts -->
         <section class="block">
-            <h2 class="section-title">Поддержка</h2>
-            <div class="grid-2">
-                <a href="#" class="btn-neon" data-tilt>
-                    <i class="fa-solid fa-headset"></i> Оператор 1
-                </a>
-                <a href="#" class="btn-neon" data-tilt>
-                    <i class="fa-solid fa-headset"></i> Оператор 2
-                </a>
-            </div>
-        </section>
-
-        <!-- Main Services -->
-        <section class="block">
-            <h2 class="section-title">Сервисы</h2>
+            <h2 class="section-title">Контакты</h2>
             <div class="grid-3">
                 <a href="#" class="btn-neon btn-grid" data-tilt>
                     <i class="fa-solid fa-robot"></i>
-                    <span>Сеть ботов</span>
+                    <span>Бот</span>
                 </a>
                 <a href="#" class="btn-neon btn-grid" data-tilt>
-                    <i class="fa-solid fa-newspaper"></i>
-                    <span>Новости</span>
+                    <i class="fa-solid fa-headset"></i>
+                    <span>Оператор</span>
                 </a>
                 <a href="#" class="btn-neon btn-grid" data-tilt>
-                    <i class="fa-solid fa-tags"></i>
-                    <span>Прайс-лист</span>
+                    <i class="fa-solid fa-crown"></i>
+                    <span>Босс</span>
                 </a>
             </div>
 
+            <p class="info-disclaimer">
+                ДОСТУП В КАНАЛ И ЧАТЫ ПРЕДОСТАВЛЯЕТСЯ ОПЕРАТОРОМ ПО ЛИЧНОЙ ПРОСЬБЕ.
+            </p>
+
             <a href="#" class="btn-neon chat-btn" data-tilt>
-                <i class="fa-solid fa-comments"></i>
-                <span>ВОЙТИ В ЧАТ</span>
+                <i class="fa-solid fa-satellite-dish"></i>
+                <span>ВОЙТИ В КАНАЛ</span>
             </a>
         </section>
 
-        <!-- Partnerships -->
+        <!-- Resources: Expanded -->
         <section class="block">
-            <h2 class="section-title">Ресурсы</h2>
+            <h2 class="section-title">Партнеры и Ресурсы</h2>
             <div class="grid-3">
-                <a href="#" class="btn-neon btn-grid" data-tilt>Форум 1</a>
-                <a href="#" class="btn-neon btn-grid" data-tilt>Форум 2</a>
-                <a href="#" class="btn-neon btn-grid" data-tilt>Форум 3</a>
+                <a href="#" class="btn-neon btn-grid" data-tilt>Forum 1</a>
+                <a href="#" class="btn-neon btn-grid" data-tilt>Forum 2</a>
+                <a href="#" class="btn-neon btn-grid" data-tilt>Forum 3</a>
             </div>
-        </section>
-
-        <!-- Locations & Logistics -->
-        <section class="block">
-            <h2 class="section-title">Локации</h2>
-            <div class="grid-2">
-                <a href="#" class="btn-neon" data-tilt>
-                    <i class="fa-solid fa-location-crosshairs"></i> КИЕВ
+            <div class="grid-2" style="margin-top: 10px;">
+                <a href="#" class="btn-neon btn-grid" data-tilt style="flex-direction: row; padding: 15px; gap: 10px;">
+                    Forum 4
                 </a>
-                <a href="#" class="btn-neon" data-tilt>
-                    <i class="fa-solid fa-location-crosshairs"></i> ОДЕССА
+                <a href="#" class="btn-neon btn-grid" data-tilt style="flex-direction: row; padding: 15px; gap: 10px;">
+                    Forum 5
                 </a>
             </div>
         </section>
 
+        <!-- Information: Logistics -->
         <section class="block">
             <h2 class="section-title">Доставка</h2>
             <div class="grid-2">
-                <a href="#" class="btn-neon" data-tilt>
-                    <i class="fa-solid fa-paper-plane"></i> ПОЧТА
-                </a>
-                <a href="#" class="btn-neon" data-tilt>
-                    <i class="fa-solid fa-fire"></i> КУРЬЕР
-                </a>
+                <div class="static-info-card">
+                    <i class="fa-solid fa-box-archive"></i>
+                    <span>ПОЧТА</span>
+                </div>
+                <div class="static-info-card">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>КУРЬЕР</span>
+                </div>
             </div>
         </section>
 
-        <!-- Career -->
-        <footer class="footer">
-            <a href="#" class="btn-neon work-btn" data-tilt>
-                <i class="fa-solid fa-user-secret"></i>
-                РАБОТА / ВАКАНСИИ
-            </a>
-        </footer>
+        <!-- Hidden Footer for spacing or future use -->
+        <footer style="height: 40px;"></footer>
     </div>
 
-    <!-- Core Interactions -->
     <script src="script.js"></script>
 </body>
 

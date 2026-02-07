@@ -10,6 +10,7 @@
 
     --text-main: #ffffff;
     --text-glass: rgba(255, 255, 255, 0.7);
+    --text-dim: rgba(255, 255, 255, 0.4);
 
     /* Shapes & Clipping */
     --clip-tech: polygon(12px 0%,
@@ -20,6 +21,13 @@
             12px 100%,
             0% calc(100% - 12px),
             0% 12px);
+
+    --clip-status: polygon(8px 0%,
+            100% 0%,
+            100% calc(100% - 8px),
+            calc(100% - 8px) 100%,
+            0% 100%,
+            0% 8px);
 
     /* Typography */
     --font-heading: 'Syncopate', sans-serif;
@@ -71,10 +79,10 @@ body {
 .main-container {
     width: 100%;
     max-width: 480px;
-    padding: 60px 24px 100px;
+    padding: 40px 24px 80px;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
     z-index: 10;
 }
 
@@ -83,18 +91,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
 .logo-wrapper {
     position: relative;
-    width: 240px;
-    height: 240px;
+    width: 200px;
+    /* Reduced slightly for new layout rhythm */
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5px;
-    /* Adjusting gap slightly */
 }
 
 .logo {
@@ -103,12 +111,8 @@ body {
     object-fit: contain;
     mix-blend-mode: lighten;
     opacity: 0.95;
-    /* Increased for better visibility */
-
-    /* Edge fading: creates a soft transition around the image edges */
     -webkit-mask-image: radial-gradient(circle, black 40%, transparent 95%);
     mask-image: radial-gradient(circle, black 40%, transparent 95%);
-
     animation: holo-flicker 6s infinite;
 }
 
@@ -136,105 +140,56 @@ body {
 
 .brand-title {
     font-family: var(--font-heading);
-    font-size: 2.6rem;
+    font-size: 2.2rem;
     font-weight: 700;
     letter-spacing: 5px;
     text-shadow: 0 0 15px var(--neon-cyan);
     text-transform: uppercase;
     text-align: center;
+    line-height: 1;
 }
 
 .subtitle {
-    font-size: 0.85rem;
-    letter-spacing: 6px;
+    font-size: 0.75rem;
+    letter-spacing: 5px;
     color: var(--neon-magenta);
     text-transform: uppercase;
     opacity: 0.7;
+    margin-bottom: 15px;
 }
 
-/* --- Premium Tech Buttons with Gradient Borders --- */
-.btn-neon {
-    position: relative;
+/* --- Hero Info Blocks (Locations) --- */
+.hero-info {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.status-tag {
+    padding: 6px 14px;
+    font-size: 0.7rem;
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    background: rgba(0, 243, 255, 0.05);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    color: var(--neon-cyan);
+    clip-path: var(--clip-status);
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 18px 24px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: rgba(0, 0, 0, 0.6);
-    clip-path: var(--clip-tech);
+    gap: 6px;
+    text-shadow: 0 0 5px var(--neon-cyan);
 }
 
-/* The Gradient Border */
-.btn-neon::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    padding: 2px;
-    /* Border thickness */
-    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta), var(--neon-purple));
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    clip-path: var(--clip-tech);
-    z-index: 1;
-}
-
-/* Outer Glow */
-.btn-neon:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.btn-neon:hover::before {
-    background: linear-gradient(90deg, var(--neon-magenta), var(--neon-cyan), var(--neon-magenta));
-    animation: border-rotate 2s linear infinite;
-}
-
-@keyframes border-rotate {
-    0% {
-        filter: hue-rotate(0deg);
-    }
-
-    100% {
-        filter: hue-rotate(360deg);
-    }
-}
-
-.btn-neon i {
-    font-size: 1.2rem;
-    color: var(--neon-cyan);
-    text-shadow: 0 0 8px var(--neon-cyan);
-}
-
-/* Grid Variants */
-.btn-grid {
-    flex-direction: column;
-    padding: 24px 12px;
+.status-tag i {
     font-size: 0.8rem;
-    gap: 8px;
-}
-
-.btn-grid i {
-    font-size: 1.8rem;
 }
 
 /* --- Section Headers --- */
 .section-title {
     font-family: var(--font-heading);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     letter-spacing: 2px;
     color: var(--text-glass);
     text-transform: uppercase;
@@ -248,51 +203,139 @@ body {
     content: '';
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, var(--glass-border), transparent);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent);
+}
+
+/* --- Premium Tech Buttons --- */
+.btn-neon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(0, 0, 0, 0.5);
+    clip-path: var(--clip-tech);
+}
+
+.btn-neon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta), var(--neon-purple));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    clip-path: var(--clip-tech);
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.btn-neon:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-neon:hover::before {
+    opacity: 1;
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.btn-neon i {
+    font-size: 1.1rem;
+    color: var(--neon-cyan);
+}
+
+/* Grid Specific */
+.btn-grid {
+    flex-direction: column;
+    padding: 20px 10px;
+    font-size: 0.75rem;
+    gap: 6px;
+}
+
+.btn-grid i {
+    font-size: 1.5rem;
+}
+
+/* --- Contacts Info Text --- */
+.info-disclaimer {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 0 10px;
+}
+
+/* --- Static Info Blocks (Delivery) --- */
+.static-info-card {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    clip-path: var(--clip-status);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    color: var(--text-glass);
+}
+
+.static-info-card i {
+    font-size: 1.2rem;
+    color: var(--neon-magenta);
+    opacity: 0.8;
+}
+
+.static-info-card span {
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 /* --- Layout Grids --- */
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 12px;
 }
 
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 10px;
 }
 
-/* --- Special Button Styles --- */
+/* --- Special Button Modifiers --- */
 .chat-btn {
     width: 100%;
     margin-top: 10px;
-    background: rgba(0, 243, 255, 0.1);
+    background: rgba(0, 243, 255, 0.05);
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    color: var(--neon-cyan);
 }
 
-.work-btn {
-    width: 100%;
-    margin-top: 20px;
-    color: var(--neon-red);
+.chat-btn::before {
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
 }
 
-.work-btn::before {
-    background: linear-gradient(90deg, var(--neon-red), var(--neon-magenta));
+.chat-btn i {
+    color: var(--neon-cyan);
 }
 
-.work-btn i {
-    color: var(--neon-red);
-    text-shadow: 0 0 8px var(--neon-red);
-}
-
-.work-btn:hover {
-    box-shadow: 0 0 30px rgba(255, 49, 49, 0.4);
-}
-
-/* Data Tilt Styling */
+/* Final Reveal */
 [data-tilt] {
     transition: transform 0.1s ease-out;
 }
