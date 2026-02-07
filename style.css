@@ -1,0 +1,291 @@
+:root {
+    /* Ultra-Premium Cyberpunk Palette */
+    --bg-deep: #050508;
+
+    --neon-cyan: #00f3ff;
+    --neon-magenta: #bc13fe;
+    --neon-purple: #8000ff;
+    --neon-green: #39ff14;
+    --neon-red: #ff3131;
+
+    --text-main: #ffffff;
+    --text-glass: rgba(255, 255, 255, 0.7);
+
+    /* Shapes & Clipping */
+    --clip-tech: polygon(12px 0%,
+            calc(100% - 12px) 0%,
+            100% 12px,
+            100% calc(100% - 12px),
+            calc(100% - 12px) 100%,
+            12px 100%,
+            0% calc(100% - 12px),
+            0% 12px);
+
+    /* Typography */
+    --font-heading: 'Syncopate', sans-serif;
+    --font-body: 'Exo 2', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Interactive Canvas Background --- */
+#canvas-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at center, #0a0a1f 0%, #050508 100%);
+}
+
+.scanlines {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: linear-gradient(to bottom,
+            rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+/* --- Container --- */
+.main-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 60px 24px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    z-index: 10;
+}
+
+/* --- Seamless Logo (Hologram Style) --- */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 15px var(--neon-cyan));
+    animation: holo-flicker 4s infinite;
+}
+
+@keyframes holo-flicker {
+
+    0%,
+    100% {
+        opacity: 0.85;
+        filter: drop-shadow(0 0 15px var(--neon-cyan));
+    }
+
+    50% {
+        opacity: 0.7;
+        filter: drop-shadow(0 0 10px var(--neon-cyan));
+    }
+
+    52% {
+        opacity: 0.9;
+    }
+
+    54% {
+        opacity: 0.7;
+    }
+}
+
+.brand-title {
+    font-family: var(--font-heading);
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-shadow: 0 0 15px var(--neon-cyan);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    color: var(--neon-magenta);
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* --- Premium Tech Buttons with Gradient Borders --- */
+.btn-neon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 24px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(0, 0, 0, 0.6);
+    clip-path: var(--clip-tech);
+}
+
+/* The Gradient Border */
+.btn-neon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    /* Border thickness */
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta), var(--neon-purple));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    clip-path: var(--clip-tech);
+    z-index: 1;
+}
+
+/* Outer Glow */
+.btn-neon:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-neon:hover::before {
+    background: linear-gradient(90deg, var(--neon-magenta), var(--neon-cyan), var(--neon-magenta));
+    animation: border-rotate 2s linear infinite;
+}
+
+@keyframes border-rotate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.btn-neon i {
+    font-size: 1.2rem;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+/* Grid Variants */
+.btn-grid {
+    flex-direction: column;
+    padding: 24px 12px;
+    font-size: 0.8rem;
+    gap: 8px;
+}
+
+.btn-grid i {
+    font-size: 1.8rem;
+}
+
+/* --- Section Headers --- */
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--text-glass);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--glass-border), transparent);
+}
+
+/* --- Layout Grids --- */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+/* --- Special Button Styles --- */
+.chat-btn {
+    width: 100%;
+    margin-top: 10px;
+    background: rgba(0, 243, 255, 0.1);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+}
+
+.work-btn {
+    width: 100%;
+    margin-top: 20px;
+    color: var(--neon-red);
+}
+
+.work-btn::before {
+    background: linear-gradient(90deg, var(--neon-red), var(--neon-magenta));
+}
+
+.work-btn i {
+    color: var(--neon-red);
+    text-shadow: 0 0 8px var(--neon-red);
+}
+
+.work-btn:hover {
+    box-shadow: 0 0 30px rgba(255, 49, 49, 0.4);
+}
+
+/* Data Tilt Styling */
+[data-tilt] {
+    transition: transform 0.1s ease-out;
+}
